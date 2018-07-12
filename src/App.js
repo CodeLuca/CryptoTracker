@@ -9,15 +9,17 @@ import Home from "./Home";
 
 class App extends Component {
   componentWillMount() {
-
+    Store.updateData();
   }
-  
+
   render() {
     return (
       <Provider store={Store}>
         <Router>
           <div>
             <Nav />
+
+            <br />
 
             <Route exact path="/" component={Home} />
           </div>
