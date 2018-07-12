@@ -5,6 +5,7 @@ let index = 0;
 class Store {
   @observable data = null;
   @observable currency = "USD";
+  @observable selected = null;
 
   updateData() {
     console.info("Updating Data...");

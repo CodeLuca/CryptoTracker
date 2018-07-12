@@ -7,6 +7,7 @@ import Store from "./Store";
 import Nav from "./Nav";
 import Home from "./Home";
 import Settings from "./Settings";
+import Details from "./Details";
 
 class App extends Component {
   componentWillMount() {
@@ -24,6 +25,7 @@ class App extends Component {
 
             <Route exact path="/" component={Home} />
             <Route exact path="/settings" component={Settings} />
+            <Route exact path="/details" component={Details} />
           </div>
         </Router>
       </Provider>

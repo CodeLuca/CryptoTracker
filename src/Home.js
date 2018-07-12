@@ -5,16 +5,21 @@ import { inject, observer } from "mobx-react";
 @inject("store")
 @observer
 class Home extends Component {
+  getDetails(selected) {
+    this.props.store.selected = selected;
+    this.props.history.push("details");
+  }
+
   chartData() {
     const currency = this.props.store.currency;
 
     if (this.props.store.data) {
       return this.props.store.data.map((current, i) => {
         return (
-          <tr key={i}>
+          <tr key={i} onClick={() => this.getDetails(current)}>
             <td>{current.rank}</td>
             <td>{current.symbol}</td>
-            <td>{current.quotes[currency].price.toFixed(2)} {currency}</td>
+            <td>{current.quotes[currency].price} {currency}</td>
             <td>{current.quotes[currency].percent_change_24h} %</td>
           </tr>
         );
