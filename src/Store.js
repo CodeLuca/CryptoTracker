@@ -4,17 +4,17 @@ let index = 0;
 
 class Store {
   @observable data = null;
+  @observable currency = "USD";
 
   updateData() {
+    console.info("Updating Data...");
 
     return new Promise((resolve, reject) => {
-      fetch("https://api.coinmarketcap.com/v2/ticker/")
+      fetch("https://api.coinmarketcap.com/v2/ticker/?convert=" + this.currency)
         .then(response => {
           return response.json();
         })
         .then(response => {
-          console.log(Object.keys(response.data));
-          
           this.data = Object.keys(response.data).map((current, i) => {
             return response.data[current];
           });
@@ -22,6 +22,11 @@ class Store {
           resolve();
         });
     });
+  }
+
+  setCurrency(newCurrency) {
+    this.currency = newCurrency;
+    this.updateData();
   }
 }
 

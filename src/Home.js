@@ -6,14 +6,16 @@ import { inject, observer } from "mobx-react";
 @observer
 class Home extends Component {
   chartData() {
+    const currency = this.props.store.currency;
+
     if (this.props.store.data) {
       return this.props.store.data.map((current, i) => {
         return (
           <tr key={i}>
             <td>{current.rank}</td>
             <td>{current.symbol}</td>
-            <td>{current.quotes.USD.price}</td>
-            <td>{current.quotes.USD.percent_change_24h} %</td>
+            <td>{current.quotes[currency].price.toFixed(2)} {currency}</td>
+            <td>{current.quotes[currency].percent_change_24h} %</td>
           </tr>
         );
       });

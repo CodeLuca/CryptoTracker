@@ -7,3 +7,23 @@ body {
 .refresh-button {
   margin-bottom: 25px;
 }
+
+tbody {
+  tr {
+    transition: 0.3s all;
+    &:hover {
+      cursor: pointer;
+      background: #ccc;
+    }
+  }
+}
+.select-currency, .current-currency {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+
+  .currency-button, span {
+    margin-left: 10px;
+  }
+}
